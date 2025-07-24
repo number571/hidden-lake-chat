@@ -7,11 +7,8 @@ import (
 	"crypto/ed25519"
 	"errors"
 	"fmt"
-	"path/filepath"
 	"strings"
 	"time"
-
-	gopeer_database "github.com/number571/go-peer/pkg/storage/database"
 
 	"github.com/gdamore/tcell/v2"
 	"github.com/number571/go-peer/pkg/crypto/asymmetric"
@@ -21,8 +18,9 @@ import (
 	"github.com/number571/hidden-lake-chat/internal/database"
 	"github.com/number571/hidden-lake-chat/internal/network"
 	"github.com/number571/hidden-lake-chat/internal/request"
-	"github.com/number571/hidden-lake-chat/internal/settings"
 	"github.com/rivo/tview"
+
+	gopeer_database "github.com/number571/go-peer/pkg/storage/database"
 )
 
 var (
@@ -45,9 +43,9 @@ type sApp struct {
 	fChanKey asymmetric.IPrivKey
 }
 
-func NewApp(pNetworkKey string, pInputPath string) types.IRunner {
+func NewApp(pNetworkKey string, pDBFilePath string) types.IRunner {
 	return &sApp{
-		fDBFilePath: filepath.Join(pInputPath, settings.CPathDB),
+		fDBFilePath: pDBFilePath,
 		fNetworkKey: pNetworkKey,
 		fApp:        tview.NewApplication(),
 	}

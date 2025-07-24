@@ -9,7 +9,6 @@ import (
 	"github.com/number571/go-peer/pkg/crypto/asymmetric"
 	"github.com/number571/go-peer/pkg/crypto/hashing"
 	"github.com/number571/go-peer/pkg/crypto/random"
-	"github.com/number571/hidden-lake-chat/internal/settings"
 	"github.com/number571/hidden-lake/pkg/request"
 )
 
@@ -81,7 +80,7 @@ func buildFailedRequest1(chanKey asymmetric.IPubKey, privKey ed25519.PrivateKey,
 		hashing.NewHMACHasher(salt, body).ToBytes(),
 	).ToBytes()
 	return request.NewRequestBuilder().
-		WithHost(settings.CProjectFullName + "?").
+		WithHost(cProjectFullName + "?").
 		WithHead(map[string]string{
 			"pubk": hex.EncodeToString(privKey.Public().(ed25519.PublicKey)),
 			"salt": hex.EncodeToString(salt),
@@ -98,7 +97,7 @@ func buildFailedRequest2(chanKey asymmetric.IPubKey, privKey ed25519.PrivateKey,
 		hashing.NewHMACHasher(salt, body).ToBytes(),
 	).ToBytes()
 	return request.NewRequestBuilder().
-		WithHost(settings.CProjectFullName).
+		WithHost(cProjectFullName).
 		WithHead(map[string]string{
 			"pubk": hex.EncodeToString(privKey.Public().(ed25519.PublicKey)),
 			"salt": hex.EncodeToString(salt),
@@ -115,7 +114,7 @@ func buildFailedRequest3(chanKey asymmetric.IPubKey, privKey ed25519.PrivateKey,
 		hashing.NewHMACHasher(salt, body).ToBytes(),
 	).ToBytes()
 	return request.NewRequestBuilder().
-		WithHost(settings.CProjectFullName).
+		WithHost(cProjectFullName).
 		WithHead(map[string]string{
 			"pubk": hex.EncodeToString(privKey.Public().(ed25519.PublicKey)),
 			"sign": hex.EncodeToString(ed25519.Sign(privKey, hash)),
@@ -131,7 +130,7 @@ func buildFailedRequest4(chanKey asymmetric.IPubKey, privKey ed25519.PrivateKey,
 		hashing.NewHMACHasher(salt, body).ToBytes(),
 	).ToBytes()
 	return request.NewRequestBuilder().
-		WithHost(settings.CProjectFullName).
+		WithHost(cProjectFullName).
 		WithHead(map[string]string{
 			"pubk": hex.EncodeToString(privKey.Public().(ed25519.PublicKey)),
 			"salt": hex.EncodeToString(salt) + "_",
@@ -149,7 +148,7 @@ func buildFailedRequest5(chanKey asymmetric.IPubKey, privKey ed25519.PrivateKey,
 	).ToBytes()
 	salt[0] ^= 1
 	return request.NewRequestBuilder().
-		WithHost(settings.CProjectFullName).
+		WithHost(cProjectFullName).
 		WithHead(map[string]string{
 			"pubk": hex.EncodeToString(privKey.Public().(ed25519.PublicKey)),
 			"salt": hex.EncodeToString(salt),

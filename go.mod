@@ -5,7 +5,7 @@ go 1.24.2
 require (
 	github.com/gdamore/tcell/v2 v2.8.1
 	github.com/number571/go-peer v1.7.10
-	github.com/number571/hidden-lake v1.8.7-0.20250724055729-4942eb2dc541
+	github.com/number571/hidden-lake v1.8.7-0.20250724064407-1114375f07bc
 	github.com/rivo/tview v0.0.0-20250625164341-a4a78f1e05cb
 )
 

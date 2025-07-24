@@ -4,7 +4,6 @@ import (
 	"os"
 	"testing"
 
-	"github.com/number571/hidden-lake-chat/internal/settings"
 	"github.com/number571/hidden-lake/build"
 	"github.com/number571/hidden-lake/pkg/utils/flag"
 )
@@ -26,7 +25,7 @@ var (
 
 const (
 	tcTestdataPath = "./testdata"
-	tcPathConfig   = settings.CPathDB
+	tcPathConfig   = "hidden-lake-chat.db"
 )
 
 func testDeleteFiles(prefixPath string) {

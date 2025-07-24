@@ -13,6 +13,8 @@ github.com/number571/go-peer v1.7.10 h1:dtmqet8Jyzj+TglM2mdh3oAgJYEF0uVy2uvKGMuw
 github.com/number571/go-peer v1.7.10/go.mod h1:gs7Q7gHQvZgN/q5SS8VdFjW3Bj8S1I1+ya66CMG9OOI=
 github.com/number571/hidden-lake v1.8.7-0.20250724055729-4942eb2dc541 h1:it074lSHrI8Z5nAX8PWCH7JZ3yPhjn0WNog4hkpcxfg=
 github.com/number571/hidden-lake v1.8.7-0.20250724055729-4942eb2dc541/go.mod h1:lcdoV7/lWzNBZycz0MXD9ycsjm/nkZI7o1Gqu3RChIw=
+github.com/number571/hidden-lake v1.8.7-0.20250724064407-1114375f07bc h1:5rs6cHQh9OhMheLVN3VyM7hf7FUYowGNXGVVXsJBobI=
+github.com/number571/hidden-lake v1.8.7-0.20250724064407-1114375f07bc/go.mod h1:lcdoV7/lWzNBZycz0MXD9ycsjm/nkZI7o1Gqu3RChIw=
 github.com/rivo/tview v0.0.0-20250625164341-a4a78f1e05cb h1:n7UJ8X9UnrTZBYXnd1kAIBc067SWyuPIrsocjketYW8=
 github.com/rivo/tview v0.0.0-20250625164341-a4a78f1e05cb/go.mod h1:cSfIYfhpSGCjp3r/ECJb+GKS7cGJnqV8vfjQPwoXyfY=
 github.com/rivo/uniseg v0.2.0/go.mod h1:J6wj4VEh+S6ZtnVlnTBMWIodfgj8LQOQFoIToxlJtxc=

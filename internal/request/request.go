@@ -8,8 +8,11 @@ import (
 	"github.com/number571/go-peer/pkg/crypto/asymmetric"
 	"github.com/number571/go-peer/pkg/crypto/hashing"
 	"github.com/number571/go-peer/pkg/crypto/random"
-	"github.com/number571/hidden-lake-chat/internal/settings"
 	"github.com/number571/hidden-lake/pkg/request"
+)
+
+const (
+	cProjectFullName = "hidden-lake-chat"
 )
 
 func BuildRequest(chanKey asymmetric.IPubKey, privKey ed25519.PrivateKey, body string) request.IRequest {
@@ -19,7 +22,7 @@ func BuildRequest(chanKey asymmetric.IPubKey, privKey ed25519.PrivateKey, body s
 		hashing.NewHMACHasher(salt, []byte(body)).ToBytes(),
 	).ToBytes()
 	return request.NewRequestBuilder().
-		WithHost(settings.CProjectFullName).
+		WithHost(cProjectFullName).
 		WithHead(map[string]string{
 			"pubk": hex.EncodeToString(privKey.Public().(ed25519.PublicKey)),
 			"salt": hex.EncodeToString(salt),
@@ -30,7 +33,7 @@ func BuildRequest(chanKey asymmetric.IPubKey, privKey ed25519.PrivateKey, body s
 }
 
 func ValidateRequest(chanKey asymmetric.IPubKey, req request.IRequest) (ed25519.PublicKey, []byte, bool) {
-	if req.GetHost() != settings.CProjectFullName {
+	if req.GetHost() != cProjectFullName {
 		return nil, nil, false
 	}
 

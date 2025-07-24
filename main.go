@@ -10,10 +10,19 @@ import (
 	"syscall"
 
 	"github.com/number571/hidden-lake-chat/internal/app"
-	"github.com/number571/hidden-lake-chat/internal/settings"
 	"github.com/number571/hidden-lake/build"
 	"github.com/number571/hidden-lake/pkg/utils/flag"
-	"github.com/number571/hidden-lake/pkg/utils/help"
+)
+
+const (
+	appVersion = "v0.0.1"
+	helpInfo   = `<Hidden Lake Chat>
+Description: anonymous console group chat
+Arguments:
+[ -v, --version ] = print version of service
+[ -h, --help ] = print information about service
+[ -p, --path ] = set path to config, database files
+[ -n, --network ] = set network key of connections from build`
 )
 
 var (
@@ -23,8 +32,8 @@ var (
 		flag.NewFlagBuilder("-h", "--help").
 			WithDescription("print information about service"),
 		flag.NewFlagBuilder("-p", "--path").
-			WithDescription("set path to config, database files").
-			WithDefinedValue("."),
+			WithDescription("set path to database file").
+			WithDefinedValue("hidden-lake-chat.db"),
 		flag.NewFlagBuilder("-n", "--network").
 			WithDescription("set network key of connections from build").
 			WithDefinedValue(build.CDefaultNetwork),
@@ -38,12 +47,12 @@ func main() {
 	}
 
 	if gFlags.Get("-v").GetBoolValue(args) {
-		fmt.Println(build.GetVersion())
+		fmt.Println(appVersion)
 		return
 	}
 
 	if gFlags.Get("-h").GetBoolValue(args) {
-		help.Println(settings.GetAppName(), settings.CProjectDescription, gFlags)
+		fmt.Println(helpInfo)
 		return
 	}
 
