@@ -29,7 +29,7 @@ var (
 )
 
 const (
-	cPathDB = "hidden-lake-chat.db"
+	cPathDB = "hl-chat.db"
 )
 
 const (
