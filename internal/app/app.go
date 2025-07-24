@@ -7,6 +7,7 @@ import (
 	"crypto/ed25519"
 	"errors"
 	"fmt"
+	"path/filepath"
 	"strings"
 	"time"
 
@@ -28,6 +29,10 @@ var (
 )
 
 const (
+	cPathDB = "hidden-lake-chat.db"
+)
+
+const (
 	cSendMessageTemplate = "[fuchsia]%X[white]\n%s\n[gray]%s[white]\n\n"
 	cRecvMessageTeamplte = "[aqua]%X[white]\n%s\n[gray]%s[white]\n\n"
 )
@@ -43,9 +48,9 @@ type sApp struct {
 	fChanKey asymmetric.IPrivKey
 }
 
-func NewApp(pNetworkKey string, pDBFilePath string) types.IRunner {
+func NewApp(pNetworkKey string, pInputPath string) types.IRunner {
 	return &sApp{
-		fDBFilePath: pDBFilePath,
+		fDBFilePath: filepath.Join(pInputPath, cPathDB),
 		fNetworkKey: pNetworkKey,
 		fApp:        tview.NewApplication(),
 	}
