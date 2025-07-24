@@ -21,22 +21,16 @@ Description: anonymous console group chat
 Arguments:
 [ -v, --version ] = print version of service
 [ -h, --help ] = print information about service
-[ -p, --path ] = set path to config, database files
-[ -n, --network ] = set network key of connections from build`
+[ -p, --path ] = set path to database file
+[ -n, --network ] = set network key from build`
 )
 
 var (
 	gFlags = flag.NewFlagsBuilder(
-		flag.NewFlagBuilder("-v", "--version").
-			WithDescription("print version of service"),
-		flag.NewFlagBuilder("-h", "--help").
-			WithDescription("print information about service"),
-		flag.NewFlagBuilder("-p", "--path").
-			WithDescription("set path to database file").
-			WithDefinedValue("hidden-lake-chat.db"),
-		flag.NewFlagBuilder("-n", "--network").
-			WithDescription("set network key of connections from build").
-			WithDefinedValue(build.CDefaultNetwork),
+		flag.NewFlagBuilder("-v", "--version"),
+		flag.NewFlagBuilder("-h", "--help"),
+		flag.NewFlagBuilder("-p", "--path").WithDefinedValue("hidden-lake-chat.db"),
+		flag.NewFlagBuilder("-n", "--network").WithDefinedValue(build.CDefaultNetwork),
 	).Build()
 )
 
