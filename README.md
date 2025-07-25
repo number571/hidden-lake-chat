@@ -1,5 +1,7 @@
 # Hidden Lake Chat
 
+> Anonymous console group chat based on Hidden Lake network 
+
 ## Installation
 
 ```bash
