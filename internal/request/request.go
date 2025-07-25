@@ -12,7 +12,7 @@ import (
 )
 
 const (
-	cProjectFullName = "hidden-lake-chat"
+	cProjectFullName = "hl-chat"
 )
 
 func BuildRequest(chanKey asymmetric.IPubKey, privKey ed25519.PrivateKey, body string) request.IRequest {

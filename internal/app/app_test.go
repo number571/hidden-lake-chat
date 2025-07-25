@@ -25,7 +25,7 @@ var (
 
 const (
 	tcTestdataPath = "./testdata"
-	tcPathConfig   = "hidden-lake-chat.db"
+	tcPathConfig   = "hl-chat.db"
 )
 
 func testDeleteFiles(prefixPath string) {
@@ -48,7 +48,7 @@ func TestInitApp(t *testing.T) {
 	testDeleteFiles(tcTestdataPath)
 	defer testDeleteFiles(tcTestdataPath)
 
-	if _, err := InitApp([]string{"--path", tcTestdataPath}, tgFlags); err != nil {
+	if _, err := InitApp(tcTestdataPath, ""); err != nil {
 		t.Fatal(err)
 	}
 }

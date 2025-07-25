@@ -2,52 +2,55 @@ package main
 
 import (
 	"context"
+	"flag"
 	"fmt"
 	"log"
-	"os"
 
-	"github.com/number571/hidden-lake-chat/internal/app"
 	"github.com/number571/hidden-lake/build"
-	"github.com/number571/hidden-lake/pkg/utils/flag"
+	"github.com/number571/hl-chat/internal/app"
 )
 
 const (
-	appVersion = "v0.0.1"
-	helpInfo   = `<Hidden Lake Chat>
-Description: anonymous console group chat
-Arguments:
-[ -v, --version ] = print version of service
-[ -h, --help ] = print information about service
-[ -p, --path ] = set path to config, database files
-[ -n, --network ] = set network key from build`
+	appVersion     = "v0.0.1"
+	defaultPath    = "."
+	defaultNetwork = build.CDefaultNetwork
 )
 
 var (
-	gFlags = flag.NewFlagsBuilder(
-		flag.NewFlagBuilder("-v", "--version"),
-		flag.NewFlagBuilder("-h", "--help"),
-		flag.NewFlagBuilder("-p", "--path").WithDefinedValue("."),
-		flag.NewFlagBuilder("-n", "--network").WithDefinedValue(build.CDefaultNetwork),
-	).Build()
+	v *bool
+	h *bool
+	p *string
+	n *string
 )
 
-func main() {
-	args := os.Args[1:]
-	if ok := gFlags.Validate(args); !ok {
-		panic("args invalid")
-	}
+func init() {
+	v = flag.Bool("version", false, "print version of application")
+	flag.BoolVar(v, "v", *v, "alias for -version")
 
-	if gFlags.Get("-v").GetBoolValue(args) {
+	h = flag.Bool("help", false, "print information about application")
+	flag.BoolVar(h, "h", *h, "alias for -help")
+
+	p = flag.String("path", defaultPath, "set path to config, database files")
+	flag.StringVar(p, "p", *p, "alias for -path")
+
+	n = flag.String("network", defaultNetwork, "set network key from build")
+	flag.StringVar(n, "n", *n, "alias for -network")
+
+	flag.Parse()
+}
+
+func main() {
+	if *v {
 		fmt.Println(appVersion)
 		return
 	}
 
-	if gFlags.Get("-h").GetBoolValue(args) {
-		fmt.Println(helpInfo)
+	if *h {
+		flag.Usage()
 		return
 	}
 
-	app, err := app.InitApp(args, gFlags)
+	app, err := app.InitApp(*p, *n)
 	if err != nil {
 		panic(err)
 	}

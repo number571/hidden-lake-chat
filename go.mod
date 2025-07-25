@@ -1,4 +1,4 @@
-module github.com/number571/hidden-lake-chat
+module github.com/number571/hl-chat
 
 go 1.24.2
 

@@ -15,7 +15,8 @@ import (
 func TestGetMessageLimitSize(t *testing.T) {
 	t.Parallel()
 
-	if limitSize := GetMessageLimitSize(1000); limitSize != 686 {
+	if limitSize := GetMessageLimitSize(1000); limitSize != 703 {
+		t.Log(limitSize)
 		t.Fatal("invalid limit size")
 	}
 
