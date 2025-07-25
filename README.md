@@ -3,7 +3,7 @@
 ## Installation
 
 ```bash
-$ go install github.com/number571/hidden-lake-chat/cmd/hl-chat@latest
+$ go install github.com/number571/hl-chat@latest
 ```
 
 ## Usage

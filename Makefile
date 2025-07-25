@@ -1,7 +1,7 @@
 GC=go build
 APPNAME=hl-chat
 BINPATH=./bin
-SOURCE=./cmd/hl-chat
+SOURCE=.
 
 .PHONY: default build remove-std clean
 default: build remove-std
